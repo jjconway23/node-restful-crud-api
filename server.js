@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res)=> {
-    res.send('Home Page')
+    res.send('Hello Node API')
 })
+
 const PORT = 3000
 app.listen(PORT, ()=> {
-    console.log(`Server listening on port number ${PORT}`)
+    console.log(`Listening on port ${PORT}`)
 })
