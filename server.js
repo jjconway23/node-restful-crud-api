@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const Product = require('./models/productModel');
 const app = express();
 
 const PORT = 3000
@@ -13,13 +14,14 @@ app.get('/blog', (req,res)=> {
     res.send("My Blog")
 })
 
-app.post('/products', (req, res)=> {
+app.post('/products', async (req, res)=> {
     try{
-        console.log(req.body);
-        res.send(req.body)
+        const product = await Product.create(req.body)
+        res.status(200).send(product)
     }
     catch (e) {
-        console.log(e)
+        console.log(e.message)
+        res.status(500).json({message:e.message})
     }
 
 })
