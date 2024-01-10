@@ -71,7 +71,7 @@ app.route('/products')
 
     })
 mongoose
-    .connect('mongodb+srv://root:admin@node-crud-rest-api.fqs1jel.mongodb.net/node-rest-crud-api?retryWrites=true&w=majority')
+    .connect()
     .then(()=> {
         console.log("Connected to MongoDB")
         app.listen(PORT, ()=> {
