@@ -11,7 +11,7 @@ const PORT = process.env.PORT
 app.use(express.json())
 app.use(express.urlencoded({extened:false}))
 
-app.use('/api', productRoute)
+app.use('/api/products', productRoute)
 mongoose
     .connect(MONGO_URL)
     .then(()=> {
