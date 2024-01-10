@@ -1,9 +1,11 @@
 const express = require('express');
+require('dotenv').config()
 const mongoose = require('mongoose');
 const Product = require('./models/productModel');
 const app = express();
 
-const PORT = 3000
+const MONGO_URL = process.env.MONGO_URL
+const PORT = process.env.PORT
 
 app.use(express.json())
 app.use(express.urlencoded({extened:false}))
@@ -71,7 +73,7 @@ app.route('/products')
 
     })
 mongoose
-    .connect()
+    .connect(MONGO_URL)
     .then(()=> {
         console.log("Connected to MongoDB")
         app.listen(PORT, ()=> {
